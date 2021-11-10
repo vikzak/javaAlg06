@@ -201,7 +201,7 @@ public class MyTree<K extends Comparable<K>, V>  {
                 node.key + " = " + node.value + " " +
                 toString(node.right);
     }
-
+    // выполнение ДЗ
     public static MyTree<Integer, Integer> generateMyTree(int myTreeCount) {
         MyTree<Integer, Integer> genTreeMap = new MyTree<>();
         for (int i = 0; i < 6; i++) {
