@@ -1,10 +1,9 @@
-import org.w3c.dom.Node;
 import java.util.NoSuchElementException;
-
-
 
 public class MyTree<K extends Comparable<K>, V>  {
     private Node root;
+    int MIN = -100;
+    int MAX = 100;
 
     private class Node {
         K key;
@@ -12,12 +11,59 @@ public class MyTree<K extends Comparable<K>, V>  {
         Node left;
         Node right;
         int size;
+        int height;
 
         public Node(K key, V value) {
             this.key = key;
             this.value = value;
             this.size = 1;
+            this.height = 0;
         }
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node node) {
+        if (node == null) {
+            return 0;
+        }
+        if (node.left == null && node.right == null) {
+            return 0;
+        }
+        if (node.left == null) {
+            return height(node.right) + 1;
+        }
+        if (node.right == null) {
+            return height(node.left) + 1;
+        }
+
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node node) {
+        if (node == null) {
+            return true;
+        }
+        if (node.left == null && node.right == null) {
+            return true;
+        }
+
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+
+        return (Math.abs(leftHeight - rightHeight) <= 1) &&
+                isBalanced(node.left) &&
+                isBalanced(node.right);
     }
 
     public int size() {
@@ -158,5 +204,23 @@ public class MyTree<K extends Comparable<K>, V>  {
         return toString(node.left) + " " +
                 node.key + " = " + node.value + " " +
                 toString(node.right);
+    }
+
+
+
+    public static MyTree<Integer, Integer> generateMyTree() {
+        MyTree<Integer, Integer> genTreeMap = new MyTree<>();
+        for (int i = 0; i < 6; i++) {
+            int num = (int) (Math.random() * (generateMyTree().MAX - generateMyTree().MIN) + generateMyTree().MIN);
+            genTreeMap.put(num, num);
+        }
+        return genTreeMap;
+    }
+
+    public static void printStatistic(int notBalancedCount, int balancedCount, int count) {
+        float notBalancedPercent = (float) notBalancedCount * 100 / (float) count;
+        float balancedPercent = 100 - notBalancedPercent;
+        System.out.println("Не сбалансированных: " + notBalancedPercent + "%");
+        System.out.println("Сбалансированных: " + balancedPercent + "%");
     }
 }

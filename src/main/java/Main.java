@@ -25,5 +25,21 @@ public class Main {
         map.delete(1);
         System.out.println(map);*/
 
+        int myTreeCount = 20;
+        int notBalancedCount = 0;
+        int balancedCount = 0;
+
+        for (int i = 0; i < myTreeCount; i++) {
+            MyTree<Integer, Integer> map = MyTree.generateMyTree();
+            if (map.isBalanced()) {
+                balancedCount++;
+            } else {
+                notBalancedCount++;
+            }
+        }
+        MyTree.printStatistic(notBalancedCount, balancedCount, myTreeCount);
     }
+
+
+
 }
