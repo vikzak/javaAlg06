@@ -41,7 +41,6 @@ public class MyTree<K extends Comparable<K>, V>  {
 
         int leftHeight = height(node.left);
         int rightHeight = height(node.right);
-
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
@@ -57,10 +56,8 @@ public class MyTree<K extends Comparable<K>, V>  {
         if (node.left == null && node.right == null) {
             return true;
         }
-
         int leftHeight = height(node.left);
         int rightHeight = height(node.right);
-
         return (Math.abs(leftHeight - rightHeight) <= 1) &&
                 isBalanced(node.left) &&
                 isBalanced(node.right);
@@ -113,7 +110,6 @@ public class MyTree<K extends Comparable<K>, V>  {
     public void put(K key, V value) {
         checkKeyNotNull(key);
         if (value == null) {
-            // delete(key)
             return;
         }
         root = put(root, key, value);
@@ -206,12 +202,13 @@ public class MyTree<K extends Comparable<K>, V>  {
                 toString(node.right);
     }
 
-    public static MyTree<Integer, Integer> generateMyTree() {
+    public static MyTree<Integer, Integer> generateMyTree(int myTreeCount) {
         MyTree<Integer, Integer> genTreeMap = new MyTree<>();
         for (int i = 0; i < 6; i++) {
             int num = (int) (Math.random() * (MAX - MIN) + MIN);
             genTreeMap.put(num, num);
         }
+        System.out.println(myTreeCount + ": " +genTreeMap);
         return genTreeMap;
     }
 

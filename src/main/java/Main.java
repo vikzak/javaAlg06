@@ -5,14 +5,14 @@ public class Main {
     * Данные, которыми необходимо заполнить узлы деревьев, представляются в виде чисел типа int.
     * Число, которое попадает в узел, должно генерироваться случайным образом в диапазоне от -100 до 100.
     * 2)Проанализировать, какой процент созданных деревьев являются несбалансированными.
-*  */
+    */
     public static void main(String[] args) {
         int myTreeCount = 20;
         int notBalanceCount = 0;
         int balanceCount = 0;
-
+        System.out.println("Сгенерированные деревья:");
         for (int i = 0; i < myTreeCount; i++) {
-            MyTree<Integer, Integer> map = MyTree.generateMyTree();
+            MyTree<Integer, Integer> map = MyTree.generateMyTree(i+1);
             if (map.isBalanced()) {
                 balanceCount++;
             } else {
@@ -21,7 +21,4 @@ public class Main {
         }
         MyTree.myTreeInfoResult(notBalanceCount, balanceCount, myTreeCount);
     }
-
-
-
 }
