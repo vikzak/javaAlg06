@@ -7,37 +7,19 @@ public class Main {
     * 2)Проанализировать, какой процент созданных деревьев являются несбалансированными.
 *  */
     public static void main(String[] args) {
-/*        MyTree<Integer, String> map = new MyTree<>();
-
-        map.put(4, "four");
-        map.put(2, "two");
-        map.put(1, "one");
-        map.put(5, "five");
-        map.put(3, "three");
-
-//        System.out.println(map.size());
-//        System.out.println(map.get(2));
-//        map.put(2, "two two");
-//        System.out.println(map.get(2));
-
-        System.out.println(map);
-
-        map.delete(1);
-        System.out.println(map);*/
-
         int myTreeCount = 20;
-        int notBalancedCount = 0;
-        int balancedCount = 0;
+        int notBalanceCount = 0;
+        int balanceCount = 0;
 
         for (int i = 0; i < myTreeCount; i++) {
             MyTree<Integer, Integer> map = MyTree.generateMyTree();
             if (map.isBalanced()) {
-                balancedCount++;
+                balanceCount++;
             } else {
-                notBalancedCount++;
+                notBalanceCount++;
             }
         }
-        MyTree.printStatistic(notBalancedCount, balancedCount, myTreeCount);
+        MyTree.myTreeInfoResult(notBalanceCount, balanceCount, myTreeCount);
     }
 
 

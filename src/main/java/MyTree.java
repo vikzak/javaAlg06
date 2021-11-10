@@ -2,8 +2,8 @@ import java.util.NoSuchElementException;
 
 public class MyTree<K extends Comparable<K>, V>  {
     private Node root;
-    int MIN = -100;
-    int MAX = 100;
+    static int MIN = -100;
+    static int MAX = 100;
 
     private class Node {
         K key;
@@ -211,16 +211,16 @@ public class MyTree<K extends Comparable<K>, V>  {
     public static MyTree<Integer, Integer> generateMyTree() {
         MyTree<Integer, Integer> genTreeMap = new MyTree<>();
         for (int i = 0; i < 6; i++) {
-            int num = (int) (Math.random() * (generateMyTree().MAX - generateMyTree().MIN) + generateMyTree().MIN);
+            int num = (int) (Math.random() * (MAX - MIN) + MIN);
             genTreeMap.put(num, num);
         }
         return genTreeMap;
     }
 
-    public static void printStatistic(int notBalancedCount, int balancedCount, int count) {
-        float notBalancedPercent = (float) notBalancedCount * 100 / (float) count;
-        float balancedPercent = 100 - notBalancedPercent;
-        System.out.println("Не сбалансированных: " + notBalancedPercent + "%");
-        System.out.println("Сбалансированных: " + balancedPercent + "%");
+    public static void myTreeInfoResult(int notBalancedCount, int balancedCount, int count) {
+        float notBalanced = (float) notBalancedCount * 100 / (float) count;
+        float balancedPercent = 100 - notBalanced;
+        System.out.println("Не сбалансировано: " + notBalanced + "%");
+        System.out.println("Сбалансировано: " + balancedPercent + "%");
     }
 }
