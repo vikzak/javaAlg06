@@ -206,8 +206,6 @@ public class MyTree<K extends Comparable<K>, V>  {
                 toString(node.right);
     }
 
-
-
     public static MyTree<Integer, Integer> generateMyTree() {
         MyTree<Integer, Integer> genTreeMap = new MyTree<>();
         for (int i = 0; i < 6; i++) {
@@ -218,9 +216,7 @@ public class MyTree<K extends Comparable<K>, V>  {
     }
 
     public static void myTreeInfoResult(int notBalancedCount, int balancedCount, int count) {
-        float notBalanced = (float) notBalancedCount * 100 / (float) count;
-        float balancedPercent = 100 - notBalanced;
-        System.out.println("Не сбалансировано: " + notBalanced + "%");
-        System.out.println("Сбалансировано: " + balancedPercent + "%");
+        System.out.println("Не сбалансировано: " + (float) notBalancedCount * 100 / (float) count + "%");
+        System.out.println("Сбалансировано: " + (float) balancedCount * 100 / (float) count + "%");
     }
 }
